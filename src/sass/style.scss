@@ -1,0 +1,474 @@
+$primary: #8E6954;
+$primary_dark: #4A1F07;
+$primary_light: #C66A36;
+$hover: #B78131;
+
+$font_size_reg: 16px;
+
+@mixin dropdown_btn {
+  .dropdown a {
+    height: 100%;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .btn {
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: $font_size_reg;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn img {
+    margin-left: 5px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $primary;
+    min-width: 220px;
+    bottom: 50px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    font-size: $font_size_reg;
+  }
+
+  .dropdown-content a:hover {
+    background-color: $primary_dark;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .arr_up {
+    display: none;
+  }
+
+  .dropdown:hover .arr_up {
+    display: block;
+  }
+
+  .dropdown:hover .arr_down {
+    display: none;
+  }
+
+  .dropdown:hover .btn {
+    background-color: $primary;
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+@mixin navigation {
+  ul {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      text-align: center;
+    }
+
+    li a {
+      color: white;
+      font-weight: 600;
+      font-size: $font_size_reg;
+    }
+  }
+}
+
+
+body, html {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Montserrat, serif;
+}
+
+.container {
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/back.png");
+  background-size: cover;
+
+  .header {
+    width: 100%;
+    height: 100%;
+
+    //I have added this class (header__bottom) because of the full-width shadow
+    &__top, &__bottom {
+      width: 100%;
+      background-color: rgba(0, 0, 0, .5);
+
+      .info {
+        height: 50px;
+        padding: 0;
+        border-bottom: 1px solid rgba($primary, .4);
+        display: flex;
+        align-items: center;
+
+        .phone {
+          flex: 3;
+
+          img {
+            width: 15px;
+          }
+
+          span {
+            font-size: $font_size_reg;
+            color: white;
+          }
+        }
+
+        .online_pay:hover {
+          background-color: $hover;
+
+          span {
+            color: $primary_dark;
+          }
+        }
+        .online_pay {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 10px;
+          background-color: $primary_dark;
+          height: 100%;
+          flex: 3;
+          text-decoration: none;
+
+          img {
+            width: 60px;
+            margin-right: 6px;
+          }
+
+          span {
+            color: $primary_light;
+            font-weight: 600;
+            font-size: $font_size_reg;
+          }
+        }
+
+        .search {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          //padding: 0 10px;
+          background-color: $primary;
+          height: 100%;
+          flex: 3.5;
+
+          button {
+            outline: none;
+            width: 100%;
+            height: 100%;
+            background-color: $primary;
+            border: none;
+
+            img {
+              width: 20px;
+            }
+          }
+
+          input {
+            border: none;
+            height: 100%;
+            background-color: $primary;
+            color: $primary_dark;
+            font-weight: 600;
+            font-size: $font_size_reg;
+            outline: none;
+            padding-left: 10px;
+          }
+
+          input::placeholder {
+            color: $primary_dark;
+            opacity: .8;
+          }
+        }
+
+        .lang {
+          @include dropdown_btn;
+
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          flex: 0.5;
+          font-size: $font_size_reg;
+
+          .dropdown a {
+            padding: 10px;
+            text-align: center;
+            color: white;
+          }
+
+          .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: transparent;
+            min-width: 0;
+            bottom: unset;
+          }
+
+          .dropdown-content a:hover {
+            background-color: transparent;
+          }
+
+          .dropdown:hover .btn {
+            background-color: transparent;
+          }
+
+          img {
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .logo {
+        width: 100%;
+
+        img {
+          margin: 0 auto;
+          padding: 20px;
+        }
+      }
+    }
+
+    &__main {
+      width: 100%;
+
+      .top_nav {
+        @include navigation;
+      }
+
+      .main_section {
+
+        display: flex;
+        align-items: center;
+        margin-top: 5%;
+
+        .title_section {
+          padding: 0;
+
+          h1 {
+            font-size: 46px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+
+          }
+
+          h3 {
+            font-size: 26px;
+            color: white;
+          }
+        }
+
+        .carousel_section {
+          padding: 0;
+
+          .carousel {
+            border-radius: 0;
+          }
+
+          .carousel_arrows {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .carousel-control-next,
+            .carousel-control-prev {
+              width: auto;
+              opacity: 1;
+            }
+
+            .carousel-control-next-i:hover,
+            .carousel-control-prev-i:hover {
+              background-color: $hover;
+            }
+
+            .carousel-control-next-i:hover i,
+            .carousel-control-prev-i:hover i {
+              color: white;
+            }
+
+            .carousel-control-next-i,
+            .carousel-control-prev-i {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 40px;
+              height: 40px;
+              background-color: white;
+              color: black;
+              font-size: 18px;
+            }
+          }
+
+          .carousel-caption {
+            padding: 0;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            text-align: left;
+            font-size: $font_size_reg;
+
+            a {
+              text-decoration: none;
+              color: white;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      bottom: 0;
+      position: absolute;
+
+      .bottom_nav {
+        @include navigation;
+      }
+
+      .bottom_nav ul li {
+        width: 100%;
+        height: 100%;
+      }
+
+      @include dropdown_btn;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  body {
+    height: unset;
+  }
+
+  .phone {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .carousel_section {
+    .container {
+      margin: 0 !important;
+      max-width: unset;
+    }
+
+    .carousel {
+      width: 100%;
+      margin: 20px 0;
+    }
+  }
+
+  .title_section {
+    padding: 20px 0 !important;
+
+    h1 {
+      font-size: 40px !important;
+    }
+
+    h3 {
+      font-size: 20px !important;
+    }
+  }
+
+  .top_nav, .header__bottom, .search, .lang, .online_pay {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .info {
+    display: none !important;
+  }
+
+  .logo {
+    img {
+      width: 350px;
+    }
+  }
+
+  .carousel_section {
+    width: 100%;
+
+    .carousel {
+      width: auto;
+    }
+  }
+
+  .main_section {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+  .title_section {
+    padding: 20px 0 !important;
+
+    h1 {
+      font-size: 30px !important;
+    }
+
+    h3 {
+      font-size: 15px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo {
+    img {
+      width: 200px;
+    }
+  }
+
+}
